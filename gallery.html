@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gallery</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- NAV BAR -->
+    <nav>
+        <ul class="navbar">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="#food">Food Rec</a></li>
+            <li><a href="#places">Places</a></li>
+        </ul>
+    </nav>
+
+    <!-- GALLERY SECTION -->
+    <div class="gallery-section">
+        <h1>Gallery</h1>
+        <p>Photos I took in Australia 📸</p>
+        <div class="gallery-grid">
+            <img src="imagess/bros.jpg" alt="Dinner hosted by University of Wollongong." class="gallery-image">
+            <img src="imagess/dinner.jpg" alt="Dinner with Bo and our group." class="gallery-image">
+            <img src="imagess/ducklings.jpg" alt="Ducklings at school." class="gallery-image">
+            <img src="imagess/scarborough-hotel.jpg" alt="Scarborough hotel." class="gallery-image">
+            <img src="imagess/sea.jpg" alt="Wollongong beach." class="gallery-image">
+            <img src="imagess/tsuki.jpg" alt="Best Japanese curry." class="gallery-image">
+            <img src="imagess/wombat.jpg" alt="Cute wombat." class="gallery-image">
+            <img src="imagess/emus.jpg" alt="An emu." class="gallery-image">
+            <img src="imagess/keira-summit.jpg" alt="View from Mt Keira summit." class="gallery-image">
+            <img src="imagess/me.jpg" alt="Me petting kangaroo." class="gallery-image">
+
+        </div>
+    </div>
+
+    <!-- Modal for Image Enlargement -->
+    <div id="imageModal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+        <div id="caption"></div>
+    </div>
+
+    <script src="gallery.js"></script>
+</body>
+</html>
