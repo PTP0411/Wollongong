@@ -1,27 +1,58 @@
-// Get the modal and images
-var modal = document.getElementById('imageModal');
-var modalImg = document.getElementById("modalImage");
-var captionText = document.getElementById("caption");
-var images = document.querySelectorAll(".gallery-image");
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImage");
+const captionText = document.getElementById("caption");
+const images = document.querySelectorAll(".gallery-image");
+let currentIndex = -1;
 
-// Loop through each image to add an event listener
-images.forEach(function (img) {
+// Open modal and store index
+images.forEach((img, i) => {
     img.onclick = function() {
-        modal.style.display = "flex";  // Show the modal using 'flex'
-        modalImg.src = this.src;       // Set the image in the modal
-        captionText.innerHTML = this.alt;  // Set the caption from the image's alt text
+        modal.style.display = "flex";
+        modalImg.src = this.src;
+        captionText.innerHTML = this.alt;
+        currentIndex = i;
     };
 });
 
-// Close the modal when the user clicks the close button
-var span = document.getElementsByClassName("close")[0];
-span.onclick = function() {
-    modal.style.display = "none";  // Close the modal when the user clicks the close button
+// Close modal with close button
+document.querySelector(".close").onclick = function () {
+    modal.style.display = "none";
 };
 
-// Close the modal when clicked outside the image (optional)
-window.onclick = function(event) {
+// Close modal by clicking outside the image
+window.onclick = function (event) {
     if (event.target === modal) {
         modal.style.display = "none";
     }
 };
+
+// Close modal with Escape key
+document.addEventListener("keydown", function (event) {
+    if (event.key === "Escape") {
+        modal.style.display = "none";
+    }
+
+    // Navigate with arrow keys
+    if (modal.style.display === "flex") {
+        if (event.key === "ArrowRight") showNextImage();
+        else if (event.key === "ArrowLeft") showPrevImage();
+    }
+});
+
+// Arrow click handlers
+document.querySelector(".prev").onclick = showPrevImage;
+document.querySelector(".next").onclick = showNextImage;
+
+// Show next image
+function showNextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    modalImg.src = images[currentIndex].src;
+    captionText.innerHTML = images[currentIndex].alt;
+}
+
+// Show previous image
+function showPrevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    modalImg.src = images[currentIndex].src;
+    captionText.innerHTML = images[currentIndex].alt;
+}
